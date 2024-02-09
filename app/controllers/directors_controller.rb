@@ -10,4 +10,13 @@ class DirectorsController < ApplicationController
     @filmography = Movie.where({ :director_id => @director.id }).to_a
     render({ :template => "directors_templates/director_details" })
   end
+
+  def get_youngest_director
+    render({ :template => "directors_templates/youngest_director"})
+  end
+
+  def get_eldest_director
+    render({ :template => "directors_templates/eldest_director"})
+  end
+
 end
