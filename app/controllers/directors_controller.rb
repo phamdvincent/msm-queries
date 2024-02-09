@@ -12,10 +12,14 @@ class DirectorsController < ApplicationController
   end
 
   def get_youngest_director
+    @youngest_dob = Director.maximum(:dob)
+    @youngest_director = Director.where({:dob => @youngest_dob}).at(0)
     render({ :template => "directors_templates/youngest_director"})
   end
 
   def get_eldest_director
+    @eldest_dob = Director.minimum(:dob)
+    @eldest_director = Director.where({:dob => @eldest_dob}).at(0)
     render({ :template => "directors_templates/eldest_director"})
   end
 
